@@ -12,22 +12,23 @@ jobs:
     name: Build and test
     steps:
       - uses: actions/checkout@v4
-      - run: cargo build --verbose -r
-      - run: cargo test --no-fail-fast --verbose --all-targets
-      - uses: actions/upload-artifact@v4
-        with:
-          name: hello-bin
-          path: target/release/hello-bin
+      # - uses: cargo-bins/cargo-binstall@main
+      - run: cargo build --verbose --release
+      - run: cargo test --verbose
+      - run: cargo install --path .
+      # - uses: actions/upload-artifact@v4
+      #   with:
+      #     name: hello-bin
+      #     path: target/release/hello-bin
   test:
     runs-on: ubuntu-latest
     needs: build
-    name: Test
+    name: Run Package
     steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: hello-bin
-      - run: ./hello-bin
+      # - uses: actions/download-artifact@v4
+      #   with:
+      #     name: hello-bin
+      # - run: ./hello-bin
       # - name: Install Package
-      #   run: cargo install --path .
-      # - name: Run Package
-      #   run: hello-bin
+      - name: Run Package
+        run: hello-bin

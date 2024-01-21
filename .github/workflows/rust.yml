@@ -19,7 +19,7 @@ jobs:
           credentials: https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com
       # - run: cargo build --verbose --release
       # - run: cargo test --verbose
-      - run: cargo install --git https://github.com/NewEarthTech/rust-build-and-host-binary.git
+      - run: cargo install --git https://github.com/${{ github.repository }}.git --branch ${{ github.ref_name }}
       - run: hello-bin
       # - uses: actions/upload-artifact@v4
       #   with:

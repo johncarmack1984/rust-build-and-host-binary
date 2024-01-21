@@ -13,6 +13,6 @@ jobs:
   build:
     uses: ./.github/workflows/build.yml
   install:
-    needs: build
+    needs: [test, build]
     uses: ./.github/workflows/install.yml
     secrets: inherit

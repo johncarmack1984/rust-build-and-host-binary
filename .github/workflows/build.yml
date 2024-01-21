@@ -16,10 +16,3 @@ jobs:
           name: binaries
           path: /tmp/target.tar
           retention-days: 1
-      # - run: cargo install --path .
-      # - run: tar -cvf /tmp/hello-bin.tar ~/.cargo/bin/hello-bin
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: binary
-      #     path: /tmp/hello-bin.tar
-      #     retention-days: 1

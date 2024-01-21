@@ -13,6 +13,6 @@ jobs:
         with:
           name: binaries
           path: /tmp/
-      - run: tar -xvf /tmp/target.tar # -C /
+      - run: tar -xvf /tmp/target.tar
       - run: cargo install --path .
       - run: hello-bin

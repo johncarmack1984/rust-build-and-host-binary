@@ -11,10 +11,6 @@ jobs:
   test:
     needs: [build]
     uses: ./.github/workflows/test.yml
-  # install:
-  #   needs: [build, test]
-  #   uses: ./.github/workflows/test.yml
   use:
-    # needs: [build, test, install]
     needs: [build, test]
     uses: ./.github/workflows/use.yml

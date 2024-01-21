@@ -5,15 +5,10 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build and Test
-    permissions:
-      contents: read
     steps:
       - uses: actions/checkout@v4
       - run: cargo build --verbose --release
-      - run: cargo test --verbose

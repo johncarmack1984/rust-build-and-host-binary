@@ -1,4 +1,4 @@
-name: Install CLI
+name: Install
 
 on:
   workflow_call:
@@ -8,9 +8,8 @@ env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
-  build:
+  install:
     runs-on: ubuntu-latest
-    name: Build and Test
     permissions:
       contents: read
     steps:

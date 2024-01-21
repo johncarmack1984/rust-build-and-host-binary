@@ -6,10 +6,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
-    uses: ./.github/workflows/test.yml
   build:
     uses: ./.github/workflows/build.yml
+  test:
+    needs: [build]
+    uses: ./.github/workflows/test.yml
+  # install:
+  #   needs: [build, test]
+  #   uses: ./.github/workflows/test.yml
   use:
+    # needs: [build, test, install]
     needs: [build, test]
     uses: ./.github/workflows/use.yml

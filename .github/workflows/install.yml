@@ -1,0 +1,26 @@
+on:
+  workflow_call:
+
+env:
+  CARGO_TERM_COLOR: always
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: binaries
+          path: /tmp/
+      - run: tar -xvf /tmp/binaries.tar -C /
+      - run: cargo install --path .
+      - run: tar -cvf /tmp/hello-bin.tar ~/.cargo/bin/hello-bin
+      - uses: actions/upload-artifact@v4
+        with:
+          name: binary
+          path: /tmp/hello-bin.tar
+          retention-days: 1

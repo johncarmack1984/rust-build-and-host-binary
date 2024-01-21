@@ -14,5 +14,6 @@ jobs:
         with:
           name: hello-bin
           path: ~/.cargo/bin/hello-bin
-      - run: echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+      - run: echo "~/.cargo/bin" >> $GITHUB_PATH
+      - run: echo $GITHUB_PATH
       - run: hello-bin

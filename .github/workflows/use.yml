@@ -8,14 +8,11 @@ jobs:
   use:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/download-artifact@v4
-      #   with:
-      #     name: binary
-      #     path: /tmp/
-      # - run: tar -xvf /tmp/hello-bin.tar -C /
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
           name: binaries
           path: /tmp/
       - run: tar -xvf /tmp/target.tar # -C /
+      - run: cargo install --path .
       - run: hello-bin

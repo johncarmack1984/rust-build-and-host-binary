@@ -9,4 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: binaries
+          path: /tmp/
+      - run: tar -xvf /tmp/target.tar # -C /
       - run: cargo test --verbose

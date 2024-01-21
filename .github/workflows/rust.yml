@@ -10,13 +10,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: Build and Test
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: de-vri-es/setup-git-credentials@v2
         with:
-          credentials: ${{ secrets.GITHUB_TOKEN }}
-      - run: cargo build --verbose --release
-      - run: cargo test --verbose
+          credentials: https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com
+      # - run: cargo build --verbose --release
+      # - run: cargo test --verbose
       - run: cargo install --git https://github.com/NewEarthTech/rust-build-and-host-binary.git
       - run: hello-bin
       # - uses: actions/upload-artifact@v4

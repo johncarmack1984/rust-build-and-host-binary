@@ -15,8 +15,8 @@ jobs:
           name: binary
           # github-token: ${{ secrets.GITHUB_TOKEN }}
           # path: ~/.cargo/bin/hello-bin
-          path: /tmp/hello-bin.tar
-      # - run: tar -xvf /tmp/hello-bin.tar -C ~/.cargo/bin
+          path: /tmp/
+      - run: tar -xvf /tmp/hello-bin.tar -C ~/.cargo/bin
       # - run: chmod +x ~/.cargo/bin/hello-bin
       - run: ls ~/.cargo/bin -al
       # - run: echo "~/.cargo/bin" >> $GITHUB_PATH

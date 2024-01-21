@@ -1,0 +1,21 @@
+name: Install CLI
+
+on:
+  workflow_call:
+
+env:
+  CARGO_TERM_COLOR: always
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build and Test
+    permissions:
+      contents: read
+    steps:
+      - uses: de-vri-es/setup-git-credentials@v2
+        with:
+          credentials: https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com
+      - run: cargo install --git https://github.com/${{ github.repository }}.git --branch ${{ env.BRANCH_NAME }}
+      - run: hello-bin

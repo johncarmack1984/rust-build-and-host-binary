@@ -11,3 +11,7 @@ jobs:
   build:
     uses: ./.github/workflows/rust.yml
     secrets: inherit
+  install:
+    needs: build
+    uses: ./.github/workflows/install.yml
+    secrets: inherit

@@ -15,10 +15,5 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - uses: de-vri-es/setup-git-credentials@v2
-        with:
-          credentials: https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com
-      # - run: cargo build --verbose --release
-      # - run: cargo test --verbose
-      - run: cargo install --git https://github.com/${{ github.repository }}.git --branch ${{ env.BRANCH_NAME }}
-      - run: hello-bin
+      - run: cargo build --verbose --release
+      - run: cargo test --verbose

@@ -5,6 +5,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
   build:
@@ -19,5 +20,5 @@ jobs:
           credentials: https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com
       # - run: cargo build --verbose --release
       # - run: cargo test --verbose
-      - run: cargo install --git https://github.com/${{ github.repository }}.git --branch ${{ github.ref }}
+      - run: cargo install --git https://github.com/${{ github.repository }}.git --branch ${{ env.BRANCH_NAME }}
       - run: hello-bin

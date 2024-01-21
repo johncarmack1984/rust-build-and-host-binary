@@ -10,14 +10,10 @@ jobs:
   #   uses: ./.github/workflows/test.yml
   # build:
   #   uses: ./.github/workflows/build.yml
-  # install:
-  #   # needs: [test, build]
-  #   uses: ./.github/workflows/install.yml
-  #   secrets: inherit
+  install:
+    # needs: [test, build]
+    uses: ./.github/workflows/install.yml
+    secrets: inherit
   use:
-    # needs: [install]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/workflows/install.yml
-      - run: hello-bin
+    needs: [install]
+    uses: ./.github/workflows/use.yml

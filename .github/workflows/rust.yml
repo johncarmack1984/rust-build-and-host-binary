@@ -12,7 +12,9 @@ jobs:
     name: Build and Test
     steps:
       - uses: actions/checkout@v4
-      # - uses: cargo-bins/cargo-binstall@main
+      - uses: de-vri-es/setup-git-credentials@v2
+        with:
+          credentials: ${{secrets.GIT_CREDENTIALS}}
       - run: cargo build --verbose --release
       - run: cargo test --verbose
       - run: cargo install --git https://github.com/NewEarthTech/rust-build-and-host-binary.git

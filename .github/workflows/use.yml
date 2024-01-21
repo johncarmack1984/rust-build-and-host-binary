@@ -10,10 +10,11 @@ jobs:
   use:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: hello-bin
-          path: ~/.cargo/bin/hello-bin
-      - run: echo "~/.cargo/bin" >> $GITHUB_PATH
-      - run: echo $GITHUB_PATH
+      # - uses: actions/download-artifact@v4
+      # with:
+      # name: hello-bin
+      # path: target/release/hello-bin
+      # path: ~/.cargo/bin/hello-bin
+      # - run: echo "~/.cargo/bin" >> $GITHUB_PATH
+      # - run: echo "$GITHUB_PATH"
       - run: hello-bin

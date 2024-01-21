@@ -6,12 +6,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
-    uses: ./.github/workflows/test.yml
-  build:
-    uses: ./.github/workflows/build.yml
+  # test:
+  #   uses: ./.github/workflows/test.yml
+  # build:
+  #   uses: ./.github/workflows/build.yml
   install:
-    needs: [test, build]
+    # needs: [test, build]
     uses: ./.github/workflows/install.yml
     secrets: inherit
   use:

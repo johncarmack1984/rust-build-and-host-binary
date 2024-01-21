@@ -1,0 +1,17 @@
+name: Install
+
+on:
+  workflow_call:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: hello-bin
+          path: ~/.cargo/bin/hello-bin
+      - run: hello-bin

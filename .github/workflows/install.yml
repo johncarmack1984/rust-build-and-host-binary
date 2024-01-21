@@ -1,5 +1,3 @@
-name: Install
-
 on:
   workflow_call:
 
@@ -17,4 +15,8 @@ jobs:
         with:
           credentials: https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com
       - run: cargo install --git https://github.com/${{ github.repository }}.git --branch ${{ env.BRANCH_NAME }}
-      - run: hello-bin
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hello-bin
+          path: ~/.cargo/bin/hello-bin
+          retention-days: 1

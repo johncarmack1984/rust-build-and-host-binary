@@ -16,3 +16,7 @@ jobs:
         run: cargo build --verbose -r
       - name: Run unit tests
         run: cargo test --verbose
+      - name: Install Package
+        run: cargo install --path . # --force
+      - name: Run Package
+        run: hello-bin

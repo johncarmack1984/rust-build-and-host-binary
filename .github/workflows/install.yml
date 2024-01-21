@@ -16,12 +16,12 @@ jobs:
           credentials: https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com
       - run: cargo install --git https://github.com/${{ github.repository }}.git --branch ${{ env.BRANCH_NAME }}
       # - run: ls -al ~/.cargo/bin
-      - run: tar -cvf /tmp/hello-bin.tar ~/.cargo/bin/hello-bin
+      - run: tar -cvf hello-bin.tar ~/.cargo/bin/hello-bin
       - uses: actions/upload-artifact@v4
         with:
-          name: hello-bin.tar
+          name: hello-bin
           # path: ~/.cargo/bin/hello-bin
-          path: /tmp
+          path: hello-bin.tar
           retention-days: 1
       # - uses: cargo-bins/cargo-binstall@main
       # - run: cargo binstall -- --git https://github.com/${{ github.repository }}.git --branch ${{ env.BRANCH_NAME }}

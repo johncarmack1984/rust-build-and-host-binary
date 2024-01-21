@@ -12,10 +12,10 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: hello-bin.tar
+          name: hello-bin
           # path: ~/.cargo/bin/hello-bin
-          path: /tmp
-      - run: tar -xvf /tmp/hello-bin.tar # -C ~/.cargo/bin
+          path: hello-bin.tar
+      - run: tar -xvf hello-bin.tar # -C ~/.cargo/bin
       # - run: chmod +x ~/.cargo/bin/hello-bin
       - run: ls ~/.cargo/bin -al
       # - run: echo "~/.cargo/bin" >> $GITHUB_PATH

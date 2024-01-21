@@ -7,11 +7,12 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  install:
+  use:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: hello-bin
           path: ~/.cargo/bin/hello-bin
+      - run: echo "$HOME/.cargo/bin" >> $GITHUB_PATH
       - run: hello-bin
